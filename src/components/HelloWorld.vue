@@ -4,7 +4,7 @@
  * @Author: liqiang
  * @email: 497232807@qq.com
  * @Date: 2021-10-16 19:44:21
- * @LastEditTime: 2021-10-17 19:16:55
+ * @LastEditTime: 2021-10-17 19:43:03
 -->
 
 <template>
@@ -46,19 +46,28 @@ export default {
       });
     },
     httpGet() {
-      const loading = this.$loading({
-        lock: true,
-        text: "Loading",
-        spinner: "el-icon-loading",
-        background: "rgba(0, 0, 0, 0.7)",
-      });
-      this.$axios({
-        method: "get",
-        url: "/",
-      }).then(function (response) {
-        console.log(response.status);
-        loading.close();
-      });
+      this.showLoading();
+      // this.$axios({
+      //   method: "get",
+      //   url: "/",
+      // }).then((response) => {
+      //   console.log(response.status);
+      //   this.closeLoading();
+      // });
+      this.$axios
+        .get("/")
+        .then((response) => {
+          // handle success
+          this.closeLoading();
+          console.log(response.status);
+        })
+        .catch((error) => {
+          // handle error
+          console.log(error);
+        })
+        .then(() => {
+          // always executed
+        });
     },
   },
 };
