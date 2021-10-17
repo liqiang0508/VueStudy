@@ -4,7 +4,7 @@
  * @Author: liqiang
  * @email: 497232807@qq.com
  * @Date: 2021-10-16 19:44:21
- * @LastEditTime: 2021-10-17 19:43:03
+ * @LastEditTime: 2021-10-17 20:03:58
 -->
 
 <template>
@@ -13,7 +13,7 @@
       <el-col :span="24">
         <div>
           <el-button>默认按钮</el-button>
-          <el-button type="primary">主要按钮</el-button>
+          <el-button type="primary" @click="pluginTest">插件测试</el-button>
           <el-button type="success" @click="httpGet">httpGet</el-button>
           <el-button type="info" @click="showAlert">弹框按钮</el-button>
           <el-button type="warning" @click="btnClick1">show mesage2</el-button>
@@ -47,13 +47,6 @@ export default {
     },
     httpGet() {
       this.showLoading();
-      // this.$axios({
-      //   method: "get",
-      //   url: "/",
-      // }).then((response) => {
-      //   console.log(response.status);
-      //   this.closeLoading();
-      // });
       this.$axios
         .get("/")
         .then((response) => {
@@ -68,6 +61,9 @@ export default {
         .then(() => {
           // always executed
         });
+    },
+    pluginTest() {
+      this.SayHello();
     },
   },
 };
