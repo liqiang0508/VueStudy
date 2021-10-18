@@ -16,7 +16,7 @@ Vue.use(ElementUI)
 
 import Axios from "axios"
 Vue.prototype.$axios = Axios;
-Axios.defaults.baseURL = '/api'
+// Axios.defaults.baseURL = '/api'
 
 
 //插件

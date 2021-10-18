@@ -52,18 +52,21 @@ export default {
     httpGet() {
       this.showLoading();
       this.$axios
-        .get("/")
+        .get("http://httpbin.org/get")
         .then((response) => {
           // handle success
-          this.closeLoading();
           console.log(response.status);
         })
         .catch((error) => {
           // handle error
-          console.log(error);
+          this.$message({
+            type: "info",
+            message: error,
+          });
         })
         .then(() => {
           // always executed
+          this.closeLoading();
         });
     },
     pluginTest() {
