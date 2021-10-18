@@ -18,6 +18,7 @@
           <el-button type="info" @click="showAlert">弹框按钮</el-button>
           <el-button type="warning" @click="btnClick1">show mesage2</el-button>
           <el-button type="danger" @click="btnClick">show mesage</el-button>
+          <el-button type="primary" @click="goTest">Go test</el-button>
         </div>
       </el-col>
     </el-row>
@@ -27,6 +28,9 @@
 <script>
 export default {
   methods: {
+    goTest() {
+      this.$router.push("/test");
+    },
     btnClick1() {
       this.$message("你好");
       console.log(this.$axios);

@@ -26,6 +26,20 @@ Vue.use(MyUtils)
 Vue.config.productionTip = false
 
 
+import VueRouter from 'vue-router'
+import HelloWorld from './components/HelloWorld.vue'
+import Test from './components/Test.vue'
+Vue.use(VueRouter)
+const routes = [
+  { path: '/', component: HelloWorld },
+  { path: "/test", component:Test}
+
+]
+const router = new VueRouter({
+  mode: 'history',
+  routes // short for `routes: routes`
+})
 new Vue({
+  router,
   render: h => h(App),
 }).$mount('#app')
