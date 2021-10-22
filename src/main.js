@@ -16,7 +16,7 @@ Vue.use(ElementUI)
 import Axios from "axios"
 import router from "./router/router"
 Vue.prototype.$axios = Axios;
-// Axios.defaults.baseURL = '/api'
+Axios.defaults.baseURL = (process.env.NODE_ENV == "development" ) ? "/api":""
 
 //插件
 import MyUtils from "./plugins/MyUtils"

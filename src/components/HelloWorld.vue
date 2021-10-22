@@ -52,10 +52,10 @@ export default {
     httpGet() {
       this.showLoading();
       this.$axios
-        .get("http://httpbin.org/get")
+        .get("")
         .then((response) => {
           // handle success
-          console.log(response.status);
+          alert(response.status);
         })
         .catch((error) => {
           // handle error
