@@ -4,7 +4,7 @@
  * @Author: liqiang
  * @email: 497232807@qq.com
  * @Date: 2021-10-17 19:49:01
- * @LastEditTime: 2021-11-03 10:33:55
+ * @LastEditTime: 2021-11-03 11:01:55
  */
 
 let MyUtils = {
@@ -16,7 +16,7 @@ let MyUtils = {
             },
             //打开loading
             Vue.prototype.showLoading = function (param = {}) {
-                if (Vue.prototype.loadingInStance){
+                if (Vue.prototype.loadingInStance) {
                     return
                 }
                 const loading = this.$loading({

@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: li qiang
  * @Date: 2021-11-03 10:17:05
- * @LastEditTime: 2021-11-03 10:35:58
+ * @LastEditTime: 2021-11-03 14:34:16
 -->
 <template>
   <div class="login-container">
@@ -15,13 +15,13 @@
       label-width="0px"
       class="demo-ruleForm login-page"
     >
-      <h3 class="title">登录</h3>
+      <h3 class="title">{{ $t('message.login') }}</h3>
       <el-form-item prop="username">
         <el-input
           type="text"
           v-model="ruleForm2.username"
           auto-complete="off"
-          placeholder="用户名"
+          :placeholder="$t('message.username')"
         ></el-input>
       </el-form-item>
       <el-form-item prop="password">
@@ -29,18 +29,28 @@
           type="password"
           v-model="ruleForm2.password"
           auto-complete="off"
-          placeholder="密码"
+          :placeholder="$t('message.password')"
           show-password
         ></el-input>
       </el-form-item>
-      <el-checkbox v-model="checked" class="rememberme">记住密码</el-checkbox>
+      <el-checkbox v-model="checked" class="rememberme">{{$t('message.remberpw')}}</el-checkbox>
       <el-form-item style="width: 100%">
         <el-button
           type="primary"
           style="width: 100%"
           @click="handleSubmit"
-          :loading="logining"
-          >登录</el-button
+          :loading="logining">
+          {{ $t('message.login') }}</el-button
+        >
+      </el-form-item>
+
+      <el-form-item style="width: 100%">
+        <el-button
+          type="primary"
+          style="width: 100%"
+          @click="changeLang"
+          :loading="logining">
+          {{ $t('message.changeLanguage') }}</el-button
         >
       </el-form-item>
     </el-form>
@@ -73,6 +83,11 @@ export default {
     };
   },
   methods: {
+    changeLang(){
+
+      this.$i18n.locale = this.$i18n.locale === 'en' ? 'zh' : 'en';
+
+    },
     handleSubmit() {
       this.$refs.ruleForm2.validate((valid) => {
         
@@ -88,9 +103,7 @@ export default {
             this.$router.replace({ path: "/test" });
           } else {
             this.logining = false;
-            this.$alert("username or password wrong!", "info", {
-              confirmButtonText: "ok",
-            });
+            this.$message({message: "用户名或密码错误", type: "error"});
           }
            this.closeLoading()
         } else {
