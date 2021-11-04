@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: li qiang
  * @Date: 2021-11-03 10:17:05
- * @LastEditTime: 2021-11-04 09:03:22
+ * @LastEditTime: 2021-11-04 17:35:52
 -->
 <template>
   <div class="login-container">
@@ -58,6 +58,8 @@
 </template>
 
 <script>
+
+import { request2Sever } from '../../utils'
 export default {
   name: "Login",
   data() {
@@ -86,6 +88,7 @@ export default {
     changeLang(){
 
       this.$i18n.locale = this.$i18n.locale === 'en' ? 'zh' : 'en';
+      request2Sever()
 
     },
     handleSubmit() {

@@ -4,7 +4,7 @@
  * @Author: liqiang
  * @email: 497232807@qq.com
  * @Date: 2021-10-17 19:49:01
- * @LastEditTime: 2021-11-03 11:01:55
+ * @LastEditTime: 2021-11-04 19:22:24
  */
 
 let MyUtils = {
@@ -31,6 +31,7 @@ let MyUtils = {
             Vue.prototype.closeLoading = function () {
                 if (Vue.prototype.loadingInStance) {
                     Vue.prototype.loadingInStance.close()
+                    Vue.prototype.loadingInStance = null
                 }
 
             }

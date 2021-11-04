@@ -4,7 +4,7 @@
  * @Author: liqiang
  * @email: 497232807@qq.com
  * @Date: 2021-10-16 19:44:21
- * @LastEditTime: 2021-10-17 20:03:58
+ * @LastEditTime: 2021-11-04 19:41:05
 -->
 
 <template>
@@ -15,6 +15,7 @@
           <el-button>默认按钮</el-button>
           <el-button type="primary" @click="pluginTest">插件测试</el-button>
           <el-button type="success" @click="httpGet">httpGet</el-button>
+          <el-button type="success" @click="httpPost">httpPost</el-button>
           <el-button type="info" @click="showAlert">弹框按钮</el-button>
           <el-button type="warning" @click="btnClick1">show mesage2</el-button>
           <el-button type="danger" @click="btnClick">show mesage</el-button>
@@ -26,6 +27,7 @@
   </div>
 </template>
 <script>
+import { post2Sever, request2Sever } from '../utils'
 export default {
   methods: {
     goTest() {
@@ -51,24 +53,25 @@ export default {
     },
     httpGet() {
       this.showLoading();
-      this.$axios
-        .get("")
-        .then((response) => {
-          // handle success
-          alert(response.status);
-        })
-        .catch((error) => {
-          // handle error
-          this.$message({
+      request2Sever("http://httpbin.org/get").then((response) => {
+         this.$message({
             type: "info",
-            message: error,
+            message: `action: ${JSON.stringify(response.statusText)}`,
           });
-        })
-        .then(() => {
-          // always executed
-          this.closeLoading();
-        });
+        this.closeLoading();
+      });
     },
+    httpPost(){
+      this.showLoading();
+      post2Sever("http://httpbin.org/post",{a:6}).then((response) => {
+        this.$message({
+            type: "info",
+            message: `action: ${JSON.stringify(response.data.json)}`,
+          });
+        this.closeLoading();
+      });
+    },
+    
     pluginTest() {
       this.SayHello();
     },

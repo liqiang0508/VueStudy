@@ -4,7 +4,7 @@
  * @Author: liqiang
  * @email: 497232807@qq.com
  * @Date: 2021-10-16 19:44:21
- * @LastEditTime: 2021-11-04 16:56:30
+ * @LastEditTime: 2021-11-04 19:29:49
  */
 import Vue from 'vue'
 import App from './App.vue'
@@ -16,7 +16,7 @@ Vue.use(ElementUI)
 import Axios from "axios"
 import router from "./router"
 Vue.prototype.$axios = Axios;
-Axios.defaults.baseURL = (process.env.NODE_ENV == "development" ) ? "/api":""
+// Axios.defaults.baseURL = (process.env.NODE_ENV == "development" ) ? "/api":""
 
 //插件
 import MyUtils from "./plugins/MyUtils"
