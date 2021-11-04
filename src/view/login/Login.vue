@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: li qiang
  * @Date: 2021-11-03 10:17:05
- * @LastEditTime: 2021-11-03 14:34:16
+ * @LastEditTime: 2021-11-04 09:03:22
 -->
 <template>
   <div class="login-container">
@@ -15,13 +15,13 @@
       label-width="0px"
       class="demo-ruleForm login-page"
     >
-      <h3 class="title">{{ $t('message.login') }}</h3>
+      <h3 class="title">{{ $t('message.STR_LOGIN') }}</h3>
       <el-form-item prop="username">
         <el-input
           type="text"
           v-model="ruleForm2.username"
           auto-complete="off"
-          :placeholder="$t('message.username')"
+          :placeholder="$t('message.STR_USERNAME')"
         ></el-input>
       </el-form-item>
       <el-form-item prop="password">
@@ -29,18 +29,18 @@
           type="password"
           v-model="ruleForm2.password"
           auto-complete="off"
-          :placeholder="$t('message.password')"
+          :placeholder="$t('message.STR_PWD')"
           show-password
         ></el-input>
       </el-form-item>
-      <el-checkbox v-model="checked" class="rememberme">{{$t('message.remberpw')}}</el-checkbox>
+      <el-checkbox v-model="checked" class="rememberme">{{$t('message.STR_REMBERPWD')}}</el-checkbox>
       <el-form-item style="width: 100%">
         <el-button
           type="primary"
           style="width: 100%"
           @click="handleSubmit"
           :loading="logining">
-          {{ $t('message.login') }}</el-button
+          {{ $t('message.STR_LOGIN') }}</el-button
         >
       </el-form-item>
 
@@ -50,7 +50,7 @@
           style="width: 100%"
           @click="changeLang"
           :loading="logining">
-          {{ $t('message.changeLanguage') }}</el-button
+          {{ $t('message.STR_CHANGELANG') }}</el-button
         >
       </el-form-item>
     </el-form>

@@ -1,18 +1,11 @@
-/*
- * @Description: 
- * @Author: li qiang
- * @Date: 2021-11-03 14:37:15
- * @LastEditTime: 2021-11-03 14:47:15
- */
-
-const zh =  {
-    message: {
-        hello: '你好世界',
-        login: '登录',
-        remberpw: '记住密码',
-        password: '密码',
-        username: '用户名',
-        changeLanguage: '切换语言'
-    }
+ const zh= {
+ 	message:{
+		"STR_HELLO":"你好世界",
+		"STR_LOGIN":"登录",
+		"STR_PWD":"密码",
+		"STR_USERNAME":"用户名",
+		"STR_CHANGELANG":"修改语言",
+		"STR_REMBERPWD":"记住密码"
+	}
 }
 export default zh

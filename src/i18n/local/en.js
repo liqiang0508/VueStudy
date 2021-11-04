@@ -1,18 +1,11 @@
-/*
- * @Description: 
- * @Author: li qiang
- * @Date: 2021-11-03 14:37:10
- * @LastEditTime: 2021-11-03 14:49:07
- */
-
-const en = {
-    message: {
-        hello: 'hello world',
-        login: 'login',
-        remberpw: 'rember password',
-        password: 'password',
-        username: 'username',
-        changeLanguage: 'ChangeLanguage'
-    }
+ const en= {
+ 	message:{
+		"STR_HELLO":"hello world",
+		"STR_LOGIN":"login",
+		"STR_PWD":"password",
+		"STR_USERNAME":"username",
+		"STR_CHANGELANG":"ChangeLanguage",
+		"STR_REMBERPWD":"rember password"
+	}
 }
 export default en
