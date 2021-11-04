@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: li qiang
  * @Date: 2021-10-20 16:09:50
- * @LastEditTime: 2021-11-04 19:46:31
+ * @LastEditTime: 2021-11-04 20:46:42
  */
 
 import NProgress from 'nprogress'
@@ -21,14 +21,29 @@ const routes = [
     { path: "/test", component: Test }
 
 ]
-var router= new VueRouter({
+const whiteList = ["/"]
+var router = new VueRouter({
     mode: 'history',
     routes // short for `routes: routes`
 })
 router.beforeEach((to, from, next) => { // 路由独享守卫
     NProgress.start()
-    console.log(to.path)
-    next()
+    var name = localStorage.getItem("username")
+    console.log("name", name)
+    if (name == "admin") //登录了
+    {
+        next()
+    } else//没登录
+    {
+        if (whiteList.indexOf(to.path) === -1) { //没在白名单
+            next(`/?redirect=${to.path}`)
+        }
+        else { //在白名单
+            next()
+        }
+    }
+
+
 })
 
 router.afterEach(() => {

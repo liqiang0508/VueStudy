@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: li qiang
  * @Date: 2021-11-03 10:17:05
- * @LastEditTime: 2021-11-04 19:53:31
+ * @LastEditTime: 2021-11-04 20:45:50
 -->
 <template>
   <div class="login-container">
@@ -15,7 +15,7 @@
       label-width="0px"
       class="demo-ruleForm login-page"
     >
-      <h3 class="title">{{ $t('message.STR_LOGIN') }}</h3>
+      <h3 class="title">{{ $t("message.STR_LOGIN") }}</h3>
       <el-form-item prop="username">
         <el-input
           type="text"
@@ -33,14 +33,17 @@
           show-password
         ></el-input>
       </el-form-item>
-      <el-checkbox v-model="checked" class="rememberme">{{$t('message.STR_REMBERPWD')}}</el-checkbox>
+      <el-checkbox v-model="checked" class="rememberme">{{
+        $t("message.STR_REMBERPWD")
+      }}</el-checkbox>
       <el-form-item style="width: 100%">
         <el-button
           type="primary"
           style="width: 100%"
           @click="handleSubmit"
-          :loading="logining">
-          {{ $t('message.STR_LOGIN') }}</el-button
+          :loading="logining"
+        >
+          {{ $t("message.STR_LOGIN") }}</el-button
         >
       </el-form-item>
 
@@ -49,8 +52,9 @@
           type="primary"
           style="width: 100%"
           @click="changeLang"
-          :loading="logining">
-          {{ $t('message.STR_CHANGELANG') }}</el-button
+          :loading="logining"
+        >
+          {{ $t("message.STR_CHANGELANG") }}</el-button
         >
       </el-form-item>
     </el-form>
@@ -58,12 +62,12 @@
 </template>
 
 <script>
-
-import { request2Sever } from '../../utils'
+import { request2Sever } from "../../utils";
 export default {
   name: "Login",
   data() {
     return {
+      redirect: undefined,
       logining: false,
       ruleForm2: {
         username: "admin",
@@ -84,33 +88,40 @@ export default {
       checked: false,
     };
   },
+  watch: {
+    $route: {
+      handler: function (route) {
+        const query = route.query;
+        if (query) {
+          this.redirect = query.redirect
+          // this.otherQuery = this.getOtherQuery(query)
+        }
+      },
+      immediate: true,
+    },
+  },
   methods: {
-    changeLang(){
-
-      this.$i18n.locale = this.$i18n.locale === 'en' ? 'zh' : 'en';
-      request2Sever()
-
+    changeLang() {
+      this.$i18n.locale = this.$i18n.locale === "en" ? "zh" : "en";
+      request2Sever();
     },
     handleSubmit() {
       this.$refs.ruleForm2.validate((valid) => {
-        
         if (valid) {
-          this.showLoading()
+          this.showLoading();
           this.logining = true;
-          if (
-            this.ruleForm2.username === "admin" &&
-            this.ruleForm2.password === "123456"
-          ) {
+          if (this.ruleForm2.username === "admin" &&this.ruleForm2.password === "123456") {
             this.logining = false;
-            sessionStorage.setItem("user", this.ruleForm2.username);
-            this.$router.replace({ path: "/home" });
+            // console.log("redirect===", this.redirect);
+            localStorage.setItem("username",this.ruleForm2.username)
+            this.$router.replace({ path:  this.redirect||"/home" });
           } else {
             this.logining = false;
-            this.$message({message: "用户名或密码错误", type: "error"});
+            this.$message({ message: "用户名或密码错误", type: "error" });
           }
-           this.closeLoading()
+          this.closeLoading();
         } else {
-          this.$message("error submit!")
+          this.$message("error submit!");
           return false;
         }
       });
