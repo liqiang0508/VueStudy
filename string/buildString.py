@@ -38,7 +38,7 @@ for langue in Langue: #把语言存起来遍历生成xml文件
 		break
 	
 	f = open(langue+".js", "w+")
-	f.write(" const "+langue+"= {\n \tmessage:{\n")
+	f.write(" const "+langue+"= {\n\tmessage:{\n")
 
 	for booksheet in workbook.sheets():#循环每个表单
     		for row in xrange(1,booksheet.nrows):
@@ -48,10 +48,10 @@ for langue in Langue: #把语言存起来遍历生成xml文件
 					celldata = celldata.replace('\n','\\n') 
 					celldata = celldata.replace('\"','\\"') 
 					text = ""
-					if row == booksheet.nrows-1:
-						text = "\""+booksheet.cell(row, 0).value+"\":"+"\""+celldata+"\"\n"
-					else:
-						text = "\""+booksheet.cell(row, 0).value+"\":"+"\""+celldata+"\",\n"
+					# if row == booksheet.nrows-1:
+					# 	text = "\""+booksheet.cell(row, 0).value+"\":"+"\""+celldata+"\"\n"
+					# else:
+					text = "\""+booksheet.cell(row, 0).value+"\":"+"\""+celldata+"\",\n"
 					f.write(("\t\t"+text))
     				
 				else:

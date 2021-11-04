@@ -1,11 +1,11 @@
  const th= {
- 	message:{
+	message:{
 		"STR_HELLO":"",
 		"STR_LOGIN":"",
 		"STR_PWD":"",
 		"STR_USERNAME":"",
 		"STR_CHANGELANG":"",
-		"STR_REMBERPWD":""
+		"STR_REMBERPWD":"",
 	}
 }
 export default th
