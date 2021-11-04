@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: li qiang
  * @Date: 2021-11-03 10:17:05
- * @LastEditTime: 2021-11-04 17:35:52
+ * @LastEditTime: 2021-11-04 19:53:31
 -->
 <template>
   <div class="login-container">
@@ -103,7 +103,7 @@ export default {
           ) {
             this.logining = false;
             sessionStorage.setItem("user", this.ruleForm2.username);
-            this.$router.replace({ path: "/test" });
+            this.$router.replace({ path: "/home" });
           } else {
             this.logining = false;
             this.$message({message: "用户名或密码错误", type: "error"});
