@@ -2,9 +2,11 @@
  * @Description: 
  * @Author: li qiang
  * @Date: 2021-10-20 16:09:50
- * @LastEditTime: 2021-11-03 10:19:56
+ * @LastEditTime: 2021-11-04 17:10:36
  */
 
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css' // progress bar style
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
@@ -21,5 +23,14 @@ const routes = [
 var router= new VueRouter({
     mode: 'history',
     routes // short for `routes: routes`
+})
+router.beforeEach((to, from, next) => { // 路由独享守卫
+    NProgress.start()
+    console.log(to.path)
+    next()
+})
+
+router.afterEach(() => {
+    NProgress.done()
 })
 export default router
