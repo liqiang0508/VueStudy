@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: li qiang
  * @Date: 2021-10-18 12:08:50
- * @LastEditTime: 2021-10-18 12:08:51
+ * @LastEditTime: 2021-11-04 19:47:22
 -->
 <template>
   <div>
@@ -16,7 +16,7 @@
 export default {
   methods: {
     backHome() {
-      this.$router.push("/");
+      this.$router.push("/home");
     },
   },
 };

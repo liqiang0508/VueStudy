@@ -4,7 +4,7 @@
  * @Author: liqiang
  * @email: 497232807@qq.com
  * @Date: 2021-10-16 19:44:21
- * @LastEditTime: 2021-11-04 19:41:05
+ * @LastEditTime: 2021-11-04 19:45:16
 -->
 
 <template>
@@ -56,7 +56,7 @@ export default {
       request2Sever("http://httpbin.org/get").then((response) => {
          this.$message({
             type: "info",
-            message: `action: ${JSON.stringify(response.statusText)}`,
+            message: `action: ${response.statusText}`,
           });
         this.closeLoading();
       });
