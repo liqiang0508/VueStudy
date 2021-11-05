@@ -181,6 +181,8 @@ const createRouter = () => new Router({
   routes: constantRoutes
 })
 
+export const asyncRoutes = []
+
 const router = createRouter()
 
 // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
