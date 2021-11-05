@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: li qiang
  * @Date: 2021-11-03 10:17:05
- * @LastEditTime: 2021-11-05 14:58:08
+ * @LastEditTime: 2021-11-05 15:21:55
 -->
 <template>
   <div class="login-container">
@@ -112,7 +112,7 @@ export default {
           this.$store
             .dispatch("user/login", this.ruleForm2)
             .then(() => {
-              this.$router.push({ path: this.redirect || "/" });
+              this.$router.push({ path: this.redirect || "/dashboard/dashboard" });
               this.loading = false;
             })
             .catch(() => {
