@@ -4,7 +4,7 @@
  * @Author: liqiang
  * @email: 497232807@qq.com
  * @Date: 2021-11-05 19:40:27
- * @LastEditTime: 2021-11-05 20:45:10
+ * @LastEditTime: 2021-11-05 22:08:59
  */
 import router from './router'
 import store from './store'
@@ -60,7 +60,7 @@ router.beforeEach(async (to, from, next) => {
       next()
     } else {
       // other pages that do not have permission to access are redirected to the login page.
-      next(`/login?redirect=${to.path}`)
+      next(`/?redirect=${to.path}`)
       NProgress.done()
     }
   }

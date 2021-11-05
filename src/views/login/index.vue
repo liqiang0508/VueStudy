@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: li qiang
  * @Date: 2021-11-03 10:17:05
- * @LastEditTime: 2021-11-05 16:25:50
+ * @LastEditTime: 2021-11-05 22:09:51
 -->
 <template>
   <div class="login-container">
@@ -13,7 +13,7 @@
       ref="ruleForm2"
       label-position="left"
       label-width="0px"
-      class="demo-ruleForm login-page"
+      class="login-page"
     >
       <h3 class="title">{{ $t("message.STR_LOGIN") }}</h3>
       <el-form-item prop="username">
@@ -142,14 +142,15 @@ export default {
 
 <style scoped>
 .login-container {
+  display: flex;
   width: 100%;
-  height: 100%;
+  text-align: center;
 }
 .login-page {
   -webkit-border-radius: 5px;
   border-radius: 5px;
   margin: 180px auto;
-  width: 350px;
+  width: 450px;
   padding: 35px 35px 15px;
   background: #fff;
   border: 1px solid #eaeaea;
@@ -158,5 +159,9 @@ export default {
 label.el-checkbox.rememberme {
   margin: 0px 0px 15px;
   text-align: left;
+}
+.title {
+  font-size: 25px;
+  margin-top: 5px;
 }
 </style>
