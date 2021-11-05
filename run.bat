@@ -1,1 +1,1 @@
-npm run serve --open
+npm run dev

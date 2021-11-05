@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: li qiang
  * @Date: 2021-11-03 10:17:05
- * @LastEditTime: 2021-11-04 20:45:50
+ * @LastEditTime: 2021-11-05 14:58:08
 -->
 <template>
   <div class="login-container">
@@ -62,7 +62,7 @@
 </template>
 
 <script>
-import { request2Sever } from "../../utils";
+// import { request2Sever } from "../../utils";
 export default {
   name: "Login",
   data() {
@@ -71,7 +71,7 @@ export default {
       logining: false,
       ruleForm2: {
         username: "admin",
-        password: "123456",
+        password: "111111",
       },
       rules2: {
         username: [
@@ -93,7 +93,7 @@ export default {
       handler: function (route) {
         const query = route.query;
         if (query) {
-          this.redirect = query.redirect
+          this.redirect = query.redirect;
           // this.otherQuery = this.getOtherQuery(query)
         }
       },
@@ -103,25 +103,23 @@ export default {
   methods: {
     changeLang() {
       this.$i18n.locale = this.$i18n.locale === "en" ? "zh" : "en";
-      request2Sever();
+      //request2Sever();
     },
     handleSubmit() {
       this.$refs.ruleForm2.validate((valid) => {
         if (valid) {
-          this.showLoading();
-          this.logining = true;
-          if (this.ruleForm2.username === "admin" &&this.ruleForm2.password === "123456") {
-            this.logining = false;
-            // console.log("redirect===", this.redirect);
-            localStorage.setItem("username",this.ruleForm2.username)
-            this.$router.replace({ path:  this.redirect||"/home" });
-          } else {
-            this.logining = false;
-            this.$message({ message: "用户名或密码错误", type: "error" });
-          }
-          this.closeLoading();
+          this.loading = true;
+          this.$store
+            .dispatch("user/login", this.ruleForm2)
+            .then(() => {
+              this.$router.push({ path: this.redirect || "/" });
+              this.loading = false;
+            })
+            .catch(() => {
+              this.loading = false;
+            });
         } else {
-          this.$message("error submit!");
+          console.log("error submit!!");
           return false;
         }
       });
