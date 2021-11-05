@@ -1,5 +1,5 @@
 const Mock = require('mockjs')
-
+const Random = Mock.Random;
 const data = Mock.mock({
   'items|30': [{
     id: '@id',
@@ -22,6 +22,19 @@ module.exports = [
         data: {
           total: items.length,
           items: items
+        }
+      }
+    }
+  },
+  {
+    url: '/vue-admin-template/table/rand',
+    type: 'get',
+    response: config => {
+      var num = Random.integer()
+      return {
+        code: 20000,
+        data: {
+          randNum: num
         }
       }
     }

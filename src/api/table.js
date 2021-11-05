@@ -7,3 +7,11 @@ export function getList(params) {
     params
   })
 }
+
+export function getRandom(params) {
+  return request({
+    url: '/vue-admin-template/table/rand',
+    method: 'get',
+    params
+  })
+}

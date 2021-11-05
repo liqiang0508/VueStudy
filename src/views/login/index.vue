@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: li qiang
  * @Date: 2021-11-03 10:17:05
- * @LastEditTime: 2021-11-05 15:55:21
+ * @LastEditTime: 2021-11-05 16:25:50
 -->
 <template>
   <div class="login-container">
@@ -62,7 +62,8 @@
 </template>
 
 <script>
-import { request2Sever } from "../../utils/request";
+import { getRandom } from "../../api/table";
+// import { request2Sever } from "../../utils/request";
 export default {
   name: "Login",
   data() {
@@ -103,13 +104,16 @@ export default {
   methods: {
     changeLang() {
       this.$i18n.locale = this.$i18n.locale === "en" ? "zh" : "en";
-      request2Sever("http://httpbin.org/get").then((response) => {
-        this.$message({
-          type: "info",
-          message: `action: ${response.statusText}`,
-        });
-        this.closeLoading();
+      getRandom({}).then((res) => {
+        console.log(res);
       });
+      // request2Sever("http://httpbin.org/get").then((response) => {
+      //   this.$message({
+      //     type: "info",
+      //     message: `action: ${response.statusText}`,
+      //   });
+      //   this.closeLoading();
+      // });
     },
     handleSubmit() {
       this.$refs.ruleForm2.validate((valid) => {
