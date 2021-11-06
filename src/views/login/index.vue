@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: li qiang
  * @Date: 2021-11-03 10:17:05
- * @LastEditTime: 2021-11-05 22:09:51
+ * @LastEditTime: 2021-11-06 15:17:35
 -->
 <template>
   <div class="login-container">
@@ -62,8 +62,9 @@
 </template>
 
 <script>
-import { getRandom } from "../../api/table";
-// import { request2Sever } from "../../utils/request";
+import { request2Sever } from "../../utils/request";
+import axios from "axios";
+
 export default {
   name: "Login",
   data() {
@@ -104,15 +105,20 @@ export default {
   methods: {
     changeLang() {
       this.$i18n.locale = this.$i18n.locale === "en" ? "zh" : "en";
-      getRandom({}).then((res) => {
+
+      // axios.get("/testData").then((res) => {
+      //   console.log(res);
+      // });
+
+      request2Sever("/testData").then((res) => {
         console.log(res);
       });
+
       // request2Sever("http://httpbin.org/get").then((response) => {
       //   this.$message({
       //     type: "info",
       //     message: `action: ${response.statusText}`,
       //   });
-      //   this.closeLoading();
       // });
     },
     handleSubmit() {
