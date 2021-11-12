@@ -2,7 +2,7 @@
  * @Description:
  * @Author: li qiang
  * @Date: 2021-11-03 10:17:05
- * @LastEditTime: 2021-11-09 14:33:06
+ * @LastEditTime: 2021-11-12 11:35:28
 -->
 <template>
   <div class="login-container">
@@ -55,6 +55,7 @@
         >
           {{ $t("message.STR_CHANGELANG") }}</el-button>
       </el-form-item>
+      <!-- <i :class="changeIocn===true?'el-icon-edit':'el-icon-place'" @click="changeIcon" /> -->
     </el-form>
   </div>
 </template>
@@ -65,6 +66,7 @@ export default {
   name: 'Login',
   data() {
     return {
+      changeIocn: true,
       redirect: undefined,
       logining: false,
       ruleForm2: {
@@ -99,6 +101,10 @@ export default {
     }
   },
   methods: {
+    changeIcon() {
+      this.changeIocn = !this.changeIocn
+      console.log('changeIcon', this.iocn)
+    },
     changeLang() {
       this.$i18n.locale = this.$i18n.locale === 'en' ? 'zh' : 'en'
 
@@ -151,8 +157,8 @@ export default {
 .login-page {
   -webkit-border-radius: 5px;
   border-radius: 5px;
-  margin: 180px auto;
-  width: 450px;
+  margin:10% auto;
+  width: 400px;
   padding: 35px 35px 15px;
   background: #fff;
   border: 1px solid #eaeaea;

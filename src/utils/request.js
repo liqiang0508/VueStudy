@@ -89,18 +89,17 @@ export function request2Sever(url, params) {
     service.get(url, {
       params: params
     }).then(res => {
-      resolve(res);
+      resolve(res)
     }).catch(err => {
       reject(err)
     })
   })
 }
 
-
 export function post2Sever(url, params) {
   return new Promise((resolve, reject) => {
     service.post(url, params).then(res => {
-      resolve(res);
+      resolve(res)
     }).catch(err => {
       reject(err)
     })
