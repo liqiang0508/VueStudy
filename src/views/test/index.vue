@@ -4,26 +4,23 @@
  * @Author: liqiang
  * @email: 497232807@qq.com
  * @Date: 2021-10-16 19:44:21
- * @LastEditTime: 2021-11-05 18:00:06
+ * @LastEditTime: 2021-11-13 19:16:35
 -->
 
 <template>
   <div class="container">
-    <el-row>
-      <el-col :span="24">
-        <div>
-          <el-button>默认按钮</el-button>
-          <el-button type="primary" @click="pluginTest">插件测试</el-button>
-          <el-button type="success" @click="httpGet">httpGet</el-button>
-          <el-button type="success" @click="httpPost">httpPost</el-button>
-          <el-button type="info" @click="showAlert">弹框按钮</el-button>
-          <el-button type="warning" @click="btnClick1">show mesage2</el-button>
-          <el-button type="danger" @click="btnClick">show mesage</el-button>
-          <el-button type="primary" @click="goTest">Go test</el-button>
-        </div>
-      </el-col>
+    <el-row type="flex" justify="start" class="rowTest">
+      <!-- <el-col :span="24"> -->
+      <el-button>默认按钮</el-button>
+      <el-button type="primary" @click="pluginTest">插件测试</el-button>
+      <el-button type="success" @click="httpGet">httpGet</el-button>
+      <el-button type="success" @click="httpPost">httpPost</el-button>
+      <el-button type="info" @click="showAlert">弹框按钮</el-button>
+      <el-button type="warning" @click="btnClick1">show mesage2</el-button>
+      <el-button type="danger" @click="btnClick">show mesage</el-button>
+      <el-button type="primary" @click="goTest">Go test</el-button>
+      <!-- </el-col> -->
     </el-row>
-    <el-row> </el-row>
   </div>
 </template>
 <script>
@@ -52,20 +49,34 @@ export default {
       });
     },
     httpGet() {
-      request2Sever("http://httpbin.org/get").then((response) => {
-        this.$message({
-          type: "info",
-          message: `action: ${response.statusText}`,
+      request2Sever("http://httpbin.org/get")
+        .then((response) => {
+          this.$message({
+            type: "info",
+            message: `action: ${response.statusText}`,
+          });
+        })
+        .catch((error) => {
+          this.$message({
+            type: "info",
+            message: `action: ${error}`,
+          });
         });
-      });
     },
     httpPost() {
-      post2Sever("http://httpbin.org/post", { a: 6 }).then((response) => {
-        this.$message({
-          type: "info",
-          message: `action: ${JSON.stringify(response.data.json)}`,
+      post2Sever("http://httpbin.org/post", { a: 6 })
+        .then((response) => {
+          this.$message({
+            type: "info",
+            message: `action: ${JSON.stringify(response.data.json)}`,
+          });
+        })
+        .catch((error) => {
+          this.$message({
+            type: "info",
+            message: `action: ${error}`,
+          });
         });
-      });
     },
 
     pluginTest() {
@@ -76,6 +87,9 @@ export default {
 </script>
 
 <style scoped>
+.rowTest {
+  flex-wrap: wrap;
+}
 .container {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -83,5 +97,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.el-button + .el-button {
+  margin-left: 0 !important;
+}
+.el-button {
+  margin-right: 10px;
 }
 </style>

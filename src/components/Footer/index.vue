@@ -2,12 +2,12 @@
  * @Description:
  * @Author: li qiang
  * @Date: 2021-11-12 10:43:12
- * @LastEditTime: 2021-11-12 11:15:51
+ * @LastEditTime: 2021-11-13 17:24:13
 -->
 <template>
   <div class="footerContainer">
     <div class="footeritem">
-      <i class="el-icon-s-home" />
+      <i class="el-icon-s-home" style="color: #409eff" />
       <span>主页</span>
     </div>
     <div class="footeritem">
@@ -26,28 +26,24 @@
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style scoped>
-
-.footerContainer{
-    position: absolute;
-    display: flex;
-    bottom: 0;
-    width: 100%;
-    height: 50px;
-    background-color: #6cf;
-    justify-content: space-around;
-    /* margin-bottom: 0px; */
+.footerContainer {
+  position: absolute;
+  display: flex;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: rgb(200, 200, 200);
+  justify-content: space-around;
+  /* margin-bottom: 0px; */
 }
-.footeritem{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.footeritem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-
 </style>
