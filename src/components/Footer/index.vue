@@ -2,7 +2,7 @@
  * @Description:
  * @Author: li qiang
  * @Date: 2021-11-12 10:43:12
- * @LastEditTime: 2021-11-13 17:24:13
+ * @LastEditTime: 2021-11-16 10:43:04
 -->
 <template>
   <div class="footerContainer">
@@ -26,18 +26,19 @@
 </template>
 
 <script>
-export default {};
+export default {}
 </script>
 
 <style scoped>
 .footerContainer {
-  position: absolute;
+  position: fixed;
   display: flex;
   bottom: 0;
   width: 100%;
   height: 50px;
   background-color: rgb(200, 200, 200);
   justify-content: space-around;
+  z-index: 99999;
   /* margin-bottom: 0px; */
 }
 .footeritem {
