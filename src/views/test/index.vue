@@ -1,10 +1,10 @@
 <!--
- * @Descripttion: 
- * @version: 
+ * @Descripttion:
+ * @version:
  * @Author: liqiang
  * @email: 497232807@qq.com
  * @Date: 2021-10-16 19:44:21
- * @LastEditTime: 2021-11-13 19:16:35
+ * @LastEditTime: 2021-11-16 10:24:23
 -->
 
 <template>
@@ -24,66 +24,66 @@
   </div>
 </template>
 <script>
-import { post2Sever, request2Sever } from "../../utils/request";
+import { post2Sever, request2Sever } from '../../utils/request'
 export default {
   methods: {
     goTest() {
-      this.$router.push("/test");
+      this.$router.push('/test')
     },
     btnClick1() {
-      this.$message("你好");
-      console.log(this.$axios);
+      this.$message('你好')
+      console.log(this.$axios)
     },
     btnClick() {
-      this.$message("你好11");
+      this.$message('你好11')
     },
     showAlert() {
-      this.$alert("这是一段内容", "标题名称", {
-        confirmButtonText: "确定",
+      this.$alert('这是一段内容', '标题名称', {
+        confirmButtonText: '确定',
         callback: (action) => {
           this.$message({
-            type: "info",
-            message: `action: ${action}`,
-          });
-        },
-      });
+            type: 'info',
+            message: `action: ${action}`
+          })
+        }
+      })
     },
     httpGet() {
-      request2Sever("http://httpbin.org/get")
+      request2Sever('http://httpbin.org/get')
         .then((response) => {
           this.$message({
-            type: "info",
-            message: `action: ${response.statusText}`,
-          });
+            type: 'info',
+            message: `action: ${response.statusText}`
+          })
         })
         .catch((error) => {
           this.$message({
-            type: "info",
-            message: `action: ${error}`,
-          });
-        });
+            type: 'info',
+            message: `action: ${error}`
+          })
+        })
     },
     httpPost() {
-      post2Sever("http://httpbin.org/post", { a: 6 })
+      post2Sever('http://httpbin.org/post', { a: 6 })
         .then((response) => {
           this.$message({
-            type: "info",
-            message: `action: ${JSON.stringify(response.data.json)}`,
-          });
+            type: 'info',
+            message: `action: ${JSON.stringify(response.data.json)}`
+          })
         })
         .catch((error) => {
           this.$message({
-            type: "info",
-            message: `action: ${error}`,
-          });
-        });
+            type: 'info',
+            message: `action: ${error}`
+          })
+        })
     },
 
     pluginTest() {
       //   this.SayHello();
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style scoped>
